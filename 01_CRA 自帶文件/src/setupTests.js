@@ -3,3 +3,4 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
+// 用於做單元測試的工具 引入 jest 測試工具
