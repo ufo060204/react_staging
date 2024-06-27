@@ -8,3 +8,5 @@
   2. 子組件 給 父組件 傳遞數據：通過 props 傳遞，要求父提前給子傳遞一個函數
 4. 注意 defaultChecked 和 checked 的區別，類似的還有： defaultValue 和 value
 5. 狀態在哪裡，操作狀態的方法就在哪裡
+
+## 二、 github
