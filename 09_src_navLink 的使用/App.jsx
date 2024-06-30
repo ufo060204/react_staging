@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, NavLink } from 'react-router-dom'
 import Home from './pages/Home' // Home 是路由組件
 import About from './pages/About' // About 是路由組件
 import Header from './components/Header' // Header 是一般組件
-import MyNavLink from './components/MyNavLink'
 
 export default class App extends Component {
   render() {
@@ -23,7 +22,7 @@ export default class App extends Component {
                 <a className='list-group-item active' href="./home.html">Home</a> */}
 
                 {/* 在 React 中靠路由連結切換組件 --- 編寫路由連結 */}
-                {/* <NavLink to="/about" className={({isActive}) => [
+                <NavLink to="/about" className={({isActive}) => [
                       'list-group-item',
                       isActive ? 'router-link-active' : null
                     ].join(' ')
@@ -38,9 +37,7 @@ export default class App extends Component {
                   }
                 >
                   Home
-                </NavLink> */}
-                <MyNavLink to="/about">About</MyNavLink>
-                <MyNavLink to="/home">Home</MyNavLink>
+                </NavLink>
               </div>
             </div>
             <div className='col-offset-2 col-8'>
