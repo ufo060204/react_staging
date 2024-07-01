@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-// React Router v5 升級到 v6 時。在 React Router v6 中，'Switch' 組件被 'Routes' 組件取代了。
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home' // Home 是路由組件
 import About from './pages/About' // About 是路由組件
 import Header from './components/Header' // Header 是一般組件
@@ -53,8 +52,6 @@ export default class App extends Component {
                   <Routes>
                     <Route path='/about' element={<About />}/>
                     <Route path='/home' element={<Home />}/>
-                    <Route path='/' element={<Navigate to='/about' replace />} />
-                    <Route path='*' element={<Navigate to='/about' replace />} />
                   </Routes>
                 </div>
               </div>
