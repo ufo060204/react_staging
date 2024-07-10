@@ -65,3 +65,70 @@ jsxCopy<NavLink to="/" end>
 5.嵌套路由的變化：
 -父路由不再需要 exact，子路由會自動相對於父路由匹配。
 總的來說，React Router v6 簡化了路由匹配的邏輯，使其更加直觀和易於使用。大多數情況下，你不需要顯式地指定嚴格或模糊匹配，路由系統會自動處理這些細節。
+
+## 九、redirect 重新導向
+在 React Router v6 中，`Redirect` 組件確實被移除了，但 `redirect` 功能仍然存在，只是以不同的形式提供。在 v6 中，你有幾種方式可以實現重定向：
+
+1. 使用 `Navigate` 組件：
+   這是在 JSX 中實現重定向的主要方式。
+
+   ```jsx
+   import { Navigate } from 'react-router-dom';
+
+   // 在路由定義中
+   <Route path="/old-path" element={<Navigate to="/new-path" replace />} />
+
+   // 或在組件內
+   function SomeComponent() {
+     return <Navigate to="/new-path" replace />;
+   }
+   ```
+
+2. 使用 `useNavigate` hook：
+   這適用於在事件處理器或效果中進行編程式導航。
+
+   ```jsx
+   import { useNavigate } from 'react-router-dom';
+
+   function SomeComponent() {
+     const navigate = useNavigate();
+
+     useEffect(() => {
+       navigate('/new-path', { replace: true });
+     }, []);
+
+     return null;
+   }
+   ```
+
+3. 使用 `redirect` 函數：
+   在 v6.4 及以後版本中，你可以在 loader 或 action 函數中使用 `redirect` 函數。
+
+   ```jsx
+   import { redirect } from 'react-router-dom';
+
+   const loader = async () => {
+     const user = await getUser();
+     if (!user) {
+       return redirect('/login');
+     }
+     return null;
+   };
+
+   // 在路由定義中
+   <Route path="/dashboard" loader={loader} element={<Dashboard />} />
+   ```
+
+4. 在路由配置中使用 `Navigate`：
+   如果你使用物件形式的路由配置，你可以這樣做：
+
+   ```jsx
+   import { Navigate } from 'react-router-dom';
+
+   const routes = [
+     { path: '/old-path', element: <Navigate to="/new-path" replace /> },
+     // 其他路由...
+   ];
+   ```
+
+總的來說，雖然 `Redirect` 組件不再存在，但 React Router v6 提供了更靈活和強大的方式來處理重定向。這些新方法更好地整合了 React 的聲明式風格和 React Router 的新特性。

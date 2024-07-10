@@ -1,10 +1,9 @@
 import React from 'react'
-import { NavLink, useRoutes } from 'react-router-dom'
-import routes from './routes'
+import { Routes, Route, NavLink } from 'react-router-dom'
+import Home from './pages/Home'
+import About from './pages/About'
 
 export default function App() {
-  // 跟據路油表生成對應的路由組件
-  const element = useRoutes(routes)
   return (
     <div className='container'>
       <div className='row'>
@@ -17,6 +16,11 @@ export default function App() {
       <div className='row'>
         <div className='col-xs-offset-2 col-xs-2'>
           <div className='list-group'>
+            {/* 原生 html 中，靠 <a> 跳轉不同頁面 */}
+            {/* <a className='list-group-item' href="./about.html">About</a>
+            <a className='list-group-item active' href="./home.html">Home</a> */}
+
+            {/* 在 React 中靠路由連結切換組件 --- 編寫路由連結 */}
             <NavLink className='list-group-item' to="/about">About</NavLink>
             <NavLink className='list-group-item' to="/home">Home</NavLink>
           </div>
@@ -25,7 +29,12 @@ export default function App() {
           <div className='panel'>
             <div className='panel-body'>
               {/* 註冊路由 */}
-              {element}
+              {/* <Route path="/about" component={About}/>
+              <Route path="/home" component={Home}/> */}
+              <Routes>
+                <Route path='/about' element={<About />}/>
+                <Route path='/home' element={<Home />}/>
+              </Routes>
             </div>
           </div>
         </div>
