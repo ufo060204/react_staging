@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>前端路由的基石</title>
+  <link rel="stylesheet" href="../public/css/bootstrap.css">
+</head>
+<body>
+  <div class="container">
+    <div class="">
+      <a href="https://www.google.com" onclick="return push('/test1')">push test1</a>
+      <button class="btn btn-outline-primary" onClick="push('/test2')">push test2</button>
+      <button class="btn btn-outline-primary" onClick="replace('/test3')">replace test3</button>
+      <button class="btn btn-outline-primary" onClick="back()">&lt;= 後退</button>
+      <button class="btn btn-outline-primary" onClick="forword()">前進 =&gt;</button>
+    </div>
+  </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/history/4.7.2/history.js"></script>
+    <script type="text/javascript">
+      // 方法一，直接使用 H5推出的 history身上的 API
+
+      // 方法二，hash值（錨點），兼容性好, 無縫切換
+      let history = History.createHashHistory() 
+      
+      function push (path){
+        history.push(path)
+        return true
+      }
+
+      function replace (path) {
+        history.replace(path) // 直接替換, 無紀錄
+      }
+
+      function back(){
+        history.goBack()
+      }
+
+      function forword(){
+        history.goForward()
+      }
+
+      history.listen((location) => {
+        console.log('請求路由路徑變化了', location);
+      })
+
+    </script>
+</body>
+</html>
