@@ -132,3 +132,26 @@ jsxCopy<NavLink to="/" end>
    ```
 
 總的來說，雖然 `Redirect` 組件不再存在，但 React Router v6 提供了更靈活和強大的方式來處理重定向。這些新方法更好地整合了 React 的聲明式風格和 React Router 的新特性。
+
+## Effect Hook 
+1. Effect Hook 可以讓你在函數元件中執行副作用操作，用於模擬類別元件式中的生命週期勾子
+2. React 中的互動操作：
+   發送 Ajax 請求資料獲取
+   設定訂閱 / 啟動計時器
+   手動更改真實 DOM
+3. 語法和說明：
+  useEffect(()=>{
+    // 在此可以執行任何帶副作用操作
+    return () =>{ // 在元件卸載前執行
+      // 在此做一些收尾工作，比如清除定時器 / 取消訂閱等
+    }
+  },[stateValue]) // 如果指定的是 []，回調函數只會在第一次 render() 後執行
+4. 可以把 useEffect Hook 看做如下三個函式的組合
+componentDidMount()
+componentDidUpdate()
+componentWillUnmount()
+
+## Ref Hook 
+1. Ref Hook 可以在函數源建中存儲/查找元件內或任意其他數據
+2. 語法：const refContainer = useRef()
+3. 作用：保存標籤對象，功能與 React.createRef() 一樣
