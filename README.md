@@ -178,7 +178,13 @@ componentWillUnmount()
 5. 在 index.js 中監測 store 中狀態的改變，一旦發生改變重新渲染 <App/>
   備註： redux 只負責管理狀態，至於狀態的改變驅動著頁面的展示，要靠我們自己寫
 
-  ## 2.總和案例_redux 完整版
-  新增文件：
-  1. count_action.js 專門用於創建 action 對象
-  2. constant.js 放置容易寫錯 的 type 值
+## 2.總和案例_redux 完整版
+新增文件：
+1. count_action.js 專門用於創建 action 對象
+2. constant.js 放置容易寫錯 的 type 值
+
+## 3.總和案例_redux 非同步 action 版
+1. 明確：延遲的動作不想交給組件自身，想交給 action 
+2. 何時需要非同步 action：想要對狀態進行操作，而是一個函式，該函式中寫非同步任務
+3. 非同步任務有結果後，分發一個同步的 action 去真正操作數據
+4. 備註：非同步 action 不是必要寫的，完全可以自己等待非同步任務的結果再去分發同步 action
