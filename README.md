@@ -188,3 +188,14 @@ componentWillUnmount()
 2. 何時需要非同步 action：想要對狀態進行操作，而是一個函式，該函式中寫非同步任務
 3. 非同步任務有結果後，分發一個同步的 action 去真正操作數據
 4. 備註：非同步 action 不是必要寫的，完全可以自己等待非同步任務的結果再去分發同步 action
+
+## 4.總和案例_react_redux 基本使用
+(1). 明確兩個概念
+  1. UI組件：不能使用任何 redux 的 api，只負責頁面的呈現、交互等
+  2. 容器組件：負責和 redux 通信，將結果交給 UI 組件
+(2). 如何創建一個容器組件 - 靠 react-redux 的 connect 函數
+  connect(mapStateToProps, mapDispatchToProps)(UI 組件)
+    mapStateToProps：映射狀態，返回值是一個物件
+    mapDispatchToProps：映射操作狀態的方法，返回值是一個物件
+(3). 備註 1：容器組件中的 store 是靠 props 傳進去的，而不是在容器中直接引入
+(4). 備註 2：mapDispatchToProps 也可以是一個物件
