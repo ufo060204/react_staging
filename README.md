@@ -189,7 +189,7 @@ componentWillUnmount()
 3. 非同步任務有結果後，分發一個同步的 action 去真正操作數據
 4. 備註：非同步 action 不是必要寫的，完全可以自己等待非同步任務的結果再去分發同步 action
 
-## 4.總和案例_react_redux 基本使用
+## 4.總和案例_react-redux 基本使用
 (1). 明確兩個概念
   1. UI組件：不能使用任何 redux 的 api，只負責頁面的呈現、交互等
   2. 容器組件：負責和 redux 通信，將結果交給 UI 組件
@@ -199,3 +199,17 @@ componentWillUnmount()
     mapDispatchToProps：映射操作狀態的方法，返回值是一個物件
 (3). 備註 1：容器組件中的 store 是靠 props 傳進去的，而不是在容器中直接引入
 (4). 備註 2：mapDispatchToProps 也可以是一個物件
+
+## 5.總和案例_react-redux 優化
+(1). 容器組件和 UI 組件整合成一個文件
+(2). 無須自己給容器組件傳遞 store. 給 <App/> 包裹一個 <Provider store={store}> 即可
+(3). 使用了 react-redux 後再也不用自己檢測 redux 中狀態的改變了，容器組件可以自動完成這個工作
+(4). mpaDispatchToProps 也可以簡單的寫成一個物件
+(5). 一個組件要和 redux 打交道要經過哪幾個步驟？
+  (1). 定義好 UI 組件 -- 不匯出
+  (2). 引入 connect 生成一個容器組件，並匯出，寫法如下：
+    connect(
+      state => ({key: value}) // 映射狀態
+      {key: xxxxAction} // 映射操作狀態的方法
+    )(UI 組件)
+  (3). 在 UI 組件中通過 this.props.xxxxx 讀取操作狀態
