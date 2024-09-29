@@ -15,7 +15,7 @@
 //   // return { type: 'increment', data: data }
 //   return { type: 'increment', data } // 簡寫
 // }
-import { INCREMENT, DECREMENT } from './constant'
+import { INCREMENT, DECREMENT } from '../constant'
 // import store from './store' 
 
 // 簡寫
