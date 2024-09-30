@@ -213,3 +213,9 @@ componentWillUnmount()
       {key: xxxxAction} // 映射操作狀態的方法
     )(UI 組件)
   (3). 在 UI 組件中通過 this.props.xxxxx 讀取操作狀態
+
+## 6.總和案例_react-redux 數據共享版
+(1). 定義一個 Person 組件，和 Count 組件通過 redux 共享數據
+(2). 為 Person 組件編寫： reducer、action、配置 constant 常數
+(3). 重點：Person 的 reducer 和 Count 的 Reducer 要使用 combineReducers 進行合併，合併後的狀態是一個物件！
+(4). 交給 store 的是總 reducer，最後注意在組件中取出狀態的時候，記得"取到位"
