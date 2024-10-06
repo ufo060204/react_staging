@@ -219,3 +219,11 @@ componentWillUnmount()
 (2). 為 Person 組件編寫： reducer、action、配置 constant 常數
 (3). 重點：Person 的 reducer 和 Count 的 Reducer 要使用 combineReducers 進行合併，合併後的狀態是一個物件！
 (4). 交給 store 的是總 reducer，最後注意在組件中取出狀態的時候，記得"取到位"
+
+## 7.總和案例_react-redux 開發者工具使用
+redux-devtools-extension 套件要求的 redux 版本 (3.1.0 或 4.0.0) 不相容
+使用 Redux Toolkit 來替代
+
+## 8.總和案例_react-redux 最終版
+(1). 所有變數名字要規範，盡量觸發物件的簡寫形式
+(2). reducer 文件夾中，編寫 index.js 專用於匯總直接匯出所有的 reducer

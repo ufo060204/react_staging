@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    const a = () => 1;
+    console.log(a());
+
+    const b = c => 1 + c;
+    console.log(b(2));
+
+    // const d = e => {data: e};
+    // return 寫法
+    const d = e => {return {data: e}};
+    console.log(d(2));
+    // 簡寫寫法
+    const d2 = e => ({data: e});
+    console.log(d2(2));
+  </script>
+</body>
+</html>
