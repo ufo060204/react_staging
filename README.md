@@ -133,6 +133,35 @@ jsxCopy<NavLink to="/" end>
 
 總的來說，雖然 `Redirect` 組件不再存在，但 React Router v6 提供了更靈活和強大的方式來處理重定向。這些新方法更好地整合了 React 的聲明式風格和 React Router 的新特性。
 
+## setState
+setState 更新狀態的 2 種寫法
+(1). setState(stateChange, [callback])---物件式的 setState
+  1. stateChange 為狀態改變物件(該物件可以體現出狀態的更改)
+  2. callback 是可選的回調函數，他在狀態更新完畢，介面也更新後(render 調用後)才被調用
+(2). setState(update, [callback])---函數式的 setState
+  1. updater 為返回 stateChange 物件的函數
+  2. updater 可以接收到 state 和 props
+  3. callback 始可選的回調函數，他在狀態更新，介面也更新後(render 調用後)才被調用
+總結：
+  1. 物件式的 setState 是函數式的 setState 的簡寫方式(語法糖)
+  2. 使用原則：
+    (1). 如果新狀態不依賴原狀態 => 使用物件方式
+    (2). 如果新狀態依賴原狀態 => 使用函數方式
+    (3). 如果需要再 setState() 執行後獲取最新的狀態數據要在第二個 callback 函數中讀取
+
+## lazyLoad
+路由組件的 lazyLoad
+1. 通過 React 的 lazy 函數配合 import() 函數動態加載路由組件 => 路由組件代碼會被分開打包
+const Loading = lazy(() => import'@/pages/Login')
+
+2. 通過 <Suspense> 指定在加載得道路由打包文件前顯示一個自定義 loading 介面
+<Suspense fallback={<Loading />}>
+  <Routes>
+    <Route path="/about" element={<About />} />
+    <Route path="/home" element={<Home />} />
+  </Routes>
+</Suspense>
+
 ## Effect Hook 
 1. Effect Hook 可以讓你在函數元件中執行副作用操作，用於模擬類別元件式中的生命週期勾子
 2. React 中的互動操作：
