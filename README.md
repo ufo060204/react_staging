@@ -162,6 +162,21 @@ const Loading = lazy(() => import'@/pages/Login')
   </Routes>
 </Suspense>
 
+## 三個常用的 Hook
+(1). State Hook: React.useState()
+(2). Effect Hook: React.useEffect()
+(3). Ref Hook: React.useRef()
+
+## State Hook
+(1). State Hook 讓函數組件也可以有 State 狀態，並進行狀態數據的讀寫操作
+(2). 語法：const [xxx, setXXX] = React.useState(initValue)
+(3). useState()說明：
+  參數：第一次初始化指定的值在內部緩存
+  返回值：包含 2 個元素的陣列，第一個作為內部當前狀態值，第二個為更新狀態的函數
+(4). setXxx() 2 種寫法
+  setXxx(newValue)：參數為非函數值，直接指定新的狀態值，內部用其覆蓋原來的狀態值
+  setXxx(value => newValue)：參數為函數，接收原本的狀態值，返回新的狀態值，內部用其覆蓋原來的狀態值
+
 ## Effect Hook 
 1. Effect Hook 可以讓你在函數元件中執行副作用操作，用於模擬類別元件式中的生命週期勾子
 2. React 中的互動操作：

@@ -12,9 +12,10 @@
 // }
 
 import React, { useState, Fragment } from "react";
-import Demo from "./components/04_Fragment";
 import SetState from "./components/01_setState";
 import LazyLoad from "./components/02_lazyLoad";
+import Hook from "./components/03_hooks";
+import Demo from "./components/04_Fragment";
 
 export default function App() {
   const [showDemo, setShowDemo] = useState(true);
@@ -28,6 +29,8 @@ export default function App() {
       <SetState />
       <hr />
       <LazyLoad />
+      <hr />
+      <Hook />
       <hr />
       {showDemo ? (
         <Demo onUnmount={handleUnmount} />

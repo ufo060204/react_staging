@@ -149,7 +149,7 @@
 // }
 
 /* 
-葉面上有 input 框，點擊可以提示輸入的值
+頁面上有 input 框，點擊可以提示輸入的值
 */
 // 使用類式組件
 // import React, { Component } from "react";
@@ -199,8 +199,8 @@
 import React, { useState, useEffect } from "react";
 // import ReactDOM from "react-dom";
 
-export default function Demo({ onUnmount }) {
-  console.log("Demo 被調用了");
+export default function Hook({ onUnmount }) {
+  console.log("Hook 被調用了");
 
   useEffect(() => {
     console.log("useEffect 被調用了");
