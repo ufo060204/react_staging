@@ -16,6 +16,7 @@ import SetState from "./components/01_setState";
 import LazyLoad from "./components/02_lazyLoad";
 import Hook from "./components/03_hooks";
 import Demo from "./components/04_Fragment";
+import ContextA from "./components/05_Context";
 
 export default function App() {
   const [showDemo, setShowDemo] = useState(true);
@@ -37,6 +38,8 @@ export default function App() {
       ) : (
         <button onClick={() => setShowDemo(true)}>重新掛載 Demo</button>
       )}
+      <hr />
+      <ContextA />
     </Fragment>
   );
 }
