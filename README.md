@@ -226,6 +226,26 @@ componentWillUnmount()
 注意
 在開發中一般不用 context，一般都用他的封裝 react 插件
 
+## 組件優化
+Component 的 2 個問題
+1. 只要執行 setState() 即使不改變狀態，組件也會重新 render()
+2. 只要當前組件重新 render()，就會自動重新 render 子組件，縱使子組件沒有用到父組件的任何數據 => 效率低
+效率高的作法
+只有當前組件的 state 或 props 數據改變時才重新 render()
+原因
+Component 中的 shouldComponentUpdate() 總是返回 true
+解決
+辦法 1：
+  重寫 shouldComponentUpdate() 方法
+  比較新舊 state 或 props 數據，如果有變化才返回 true，如果沒有返回 false
+辦法 2：
+  使用 PureComponent
+  PureComponent 重寫了 shouldComponentUpdate()，只有 state 或 props 數據有變化才返回 true
+注意：
+  只是進行 state 和 props 數據的淺比較，如果只是數據物件內部數據變化了，返回 false
+  不要直接修改 state 數據，而是要產生新數據
+項目中一般使用 PureComponent 來優化
+
 ## 1.總和案例_redux 精簡版
 1. 去除 Count 元件自身狀態
 2. .src 下建立：

@@ -17,6 +17,7 @@ import LazyLoad from "./components/02_lazyLoad";
 import Hook from "./components/03_hooks";
 import Demo from "./components/04_Fragment";
 import ContextA from "./components/05_Context";
+import Parent from "./components/06_optimize";
 
 export default function App() {
   const [showDemo, setShowDemo] = useState(true);
@@ -40,6 +41,9 @@ export default function App() {
       )}
       <hr />
       <ContextA />
+      <hr />
+      <Parent />
+
     </Fragment>
   );
 }
