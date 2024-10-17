@@ -18,6 +18,7 @@ import Hook from "./components/03_hooks";
 import Demo from "./components/04_Fragment";
 import ContextA from "./components/05_Context";
 import Parent from "./components/06_optimize";
+import RenderPropsParent from "./components/07_renderProps";
 
 export default function App() {
   const [showDemo, setShowDemo] = useState(true);
@@ -43,7 +44,8 @@ export default function App() {
       <ContextA />
       <hr />
       <Parent />
-
+      <hr />
+      <RenderPropsParent />
     </Fragment>
   );
 }
