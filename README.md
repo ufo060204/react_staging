@@ -266,6 +266,52 @@ render props
 A 組件：{this.props.render(內部 state 數據)}
 C 組件：讀取 A 組件傳入的數據顯示 {this.props.data}
 
+## 錯誤邊界
+理解：
+錯誤邊界(Error boundary)：用來捕獲後代組件錯誤，渲染出備用頁面
+特點：只能捕獲後代組件生命週期產生的錯誤，不能捕獲自己組件產生的錯誤和其他組件在合成事件、定時器中產生的錯誤
+使用方式：
+
+getDerivedStateFromError 配合 componentDidCatch
+
+// 生命週期函數，一旦後台組件報錯，就會觸發
+static getDerivedStateFromError(error) {
+  console.log(error);
+  // 在 render 之前觸發
+  // 返回新的 state
+  return {
+    hasError: true,
+  };
+}
+
+componentDidCatch(error, info) {
+  // 統計頁面的錯誤，發送請求到後台去
+  console.log(error, info)
+}
+
+## 組件通信方式總結
+組件間的關係：
+- 父子組件
+- 兄弟組件(非嵌套組件)
+- 祖孫組件(跨級組建)
+
+幾種通信方式
+1. props：
+  (1). children props
+  (2). render props
+2. 消息訂閱-發布：
+  pubs-sub、event 等等
+3. 集中式管理：
+  redux、dva 等等
+4. conText：
+  生產者-消費模式
+
+比較好的搭配方式：
+  父子組件： props
+  兄弟組件： 消息訂閱-發布、集中式管理
+  祖孫組件(跨級組件)：消息訂閱-發布、集中式管理、conText(開發用的少，封裝插件用的多)
+
+
 ## 1.總和案例_redux 精簡版
 1. 去除 Count 元件自身狀態
 2. .src 下建立：

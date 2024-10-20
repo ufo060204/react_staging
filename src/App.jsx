@@ -19,6 +19,7 @@ import Demo from "./components/04_Fragment";
 import ContextA from "./components/05_Context";
 import Parent from "./components/06_optimize";
 import RenderPropsParent from "./components/07_renderProps";
+import ErrorBoundary from "./components/08_Error_Boundary/Parent";
 
 export default function App() {
   const [showDemo, setShowDemo] = useState(true);
@@ -46,6 +47,8 @@ export default function App() {
       <Parent />
       <hr />
       <RenderPropsParent />
+      <hr />
+      <ErrorBoundary />
     </Fragment>
   );
 }
